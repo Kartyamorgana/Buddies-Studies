@@ -1,0 +1,349 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "highlight.js/styles/github-dark.css";
+@import "katex/dist/katex.min.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-code-bg: var(--code-bg);
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.99 0.005 240);
+  --foreground: oklch(0.18 0.03 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.03 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.03 250);
+  --primary: oklch(0.55 0.18 250);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.96 0.01 250);
+  --secondary-foreground: oklch(0.2 0.03 250);
+  --muted: oklch(0.96 0.008 250);
+  --muted-foreground: oklch(0.5 0.02 250);
+  --accent: oklch(0.94 0.03 250);
+  --accent-foreground: oklch(0.25 0.05 250);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.91 0.01 250);
+  --input: oklch(0.91 0.01 250);
+  --ring: oklch(0.55 0.18 250);
+  --sidebar: oklch(0.975 0.008 250);
+  --sidebar-foreground: oklch(0.2 0.03 250);
+  --sidebar-border: oklch(0.91 0.01 250);
+  --code-bg: oklch(0.18 0.02 250);
+}
+
+.dark {
+  --background: oklch(0.15 0.02 250);
+  --foreground: oklch(0.96 0.005 250);
+  --card: oklch(0.19 0.025 250);
+  --card-foreground: oklch(0.96 0.005 250);
+  --popover: oklch(0.19 0.025 250);
+  --popover-foreground: oklch(0.96 0.005 250);
+  --primary: oklch(0.7 0.17 250);
+  --primary-foreground: oklch(0.15 0.02 250);
+  --secondary: oklch(0.24 0.025 250);
+  --secondary-foreground: oklch(0.96 0.005 250);
+  --muted: oklch(0.24 0.025 250);
+  --muted-foreground: oklch(0.7 0.02 250);
+  --accent: oklch(0.28 0.04 250);
+  --accent-foreground: oklch(0.96 0.005 250);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.28 0.025 250 / 60%);
+  --input: oklch(0.28 0.025 250);
+  --ring: oklch(0.7 0.17 250);
+  --sidebar: oklch(0.13 0.02 250);
+  --sidebar-foreground: oklch(0.92 0.005 250);
+  --sidebar-border: oklch(0.25 0.025 250);
+  --code-bg: oklch(0.12 0.015 250);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body, #root { height: 100%; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+/* Markdown prose */
+.prose-note {
+  color: var(--color-foreground);
+  line-height: 1.7;
+}
+.prose-note h1 { font-size: 1.875rem; font-weight: 700; margin: 1.5rem 0 0.75rem; letter-spacing: -0.02em; }
+.prose-note h2 {
+  font-size: 1.5rem; font-weight: 700; margin: 2rem 0 0.75rem; letter-spacing: -0.01em;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid color-mix(in oklab, var(--color-primary) 30%, transparent);
+}
+.prose-note h3 {
+  font-size: 1.2rem; font-weight: 650; margin: 1.25rem 0 0.5rem;
+  padding-left: 0.65rem; border-left: 3px solid var(--color-primary);
+}
+.prose-note h4 { font-size: 1.05rem; font-weight: 600; margin: 0.75rem 0 0.25rem; }
+.prose-note p { margin: 0.75rem 0; }
+.prose-note ul { list-style: disc; padding-left: 1.5rem; margin: 0.5rem 0; }
+.prose-note ol { list-style: decimal; padding-left: 1.5rem; margin: 0.5rem 0; }
+.prose-note li { margin: 0.25rem 0; }
+.prose-note li::marker { color: var(--color-primary); }
+.prose-note ul:has(input[type="checkbox"]) { list-style: none; padding-left: 0.25rem; }
+.prose-note input[type="checkbox"] { accent-color: var(--color-primary); margin-right: 0.5rem; }
+.prose-note strong { color: color-mix(in oklab, var(--color-foreground) 85%, var(--color-primary) 40%); }
+.prose-note a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+.prose-note blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1rem;
+  color: var(--color-muted-foreground);
+  margin: 1rem 0;
+  font-style: italic;
+}
+.prose-note code:not(pre code) {
+  background: var(--color-muted);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+.prose-note hr { border: 0; border-top: 1px solid var(--color-border); margin: 1.5rem 0; }
+.prose-note table {
+  border-collapse: collapse; margin: 1rem 0; width: 100%;
+  display: block; overflow-x: auto; font-size: 0.925rem;
+}
+.prose-note th, .prose-note td { border: 1px solid var(--color-border); padding: 0.5rem 0.75rem; text-align: left; }
+.prose-note th { background: var(--color-muted); font-weight: 600; }
+.prose-note tbody tr:nth-child(even) { background: color-mix(in oklab, var(--color-muted) 45%, transparent); }
+
+/* Reading meta bar */
+.note-meta {
+  display: flex; flex-wrap: wrap; gap: 0.75rem;
+  font-size: 0.75rem; color: var(--color-muted-foreground);
+  margin-bottom: 0.5rem;
+}
+.note-meta span { display: inline-flex; align-items: center; gap: 0.3rem; }
+
+/* Callouts */
+.callout {
+  margin: 1.1rem 0;
+  border: 1px solid color-mix(in oklab, var(--cal) 35%, transparent);
+  border-left: 4px solid var(--cal);
+  background: color-mix(in oklab, var(--cal) 8%, transparent);
+  border-radius: 0.6rem;
+  padding: 0.75rem 1rem;
+}
+.callout-title {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-weight: 650; font-size: 0.85rem; color: var(--cal);
+  text-transform: uppercase; letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+.callout-body > :first-child { margin-top: 0; }
+.callout-body > :last-child { margin-bottom: 0; }
+.callout-note { --cal: var(--color-primary); }
+.callout-tip { --cal: oklch(0.62 0.16 160); }
+.callout-important { --cal: oklch(0.6 0.2 300); }
+.callout-warning { --cal: oklch(0.68 0.16 75); }
+.callout-caution { --cal: var(--color-destructive); }
+
+/* Collapsible self-check */
+.prose-note details {
+  margin: 0.85rem 0;
+  border: 1px dashed color-mix(in oklab, var(--color-primary) 45%, var(--color-border));
+  border-radius: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  background: color-mix(in oklab, var(--color-primary) 5%, transparent);
+}
+.prose-note summary {
+  cursor: pointer; font-weight: 600; font-size: 0.925rem;
+  color: color-mix(in oklab, var(--color-foreground) 80%, var(--color-primary) 50%);
+}
+.prose-note details[open] summary { margin-bottom: 0.5rem; }
+.prose-note em:first-child { font-style: italic; }
+
+
+/* Code block wrapper styling */
+.code-block {
+  background: var(--color-code-bg);
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  background: color-mix(in oklab, var(--color-code-bg) 80%, white 8%);
+  color: oklch(0.85 0.02 250);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.code-block pre {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+.code-block pre code { background: transparent !important; padding: 0 !important; color: oklch(0.92 0.01 250); }
+.copy-btn {
+  background: transparent;
+  border: 1px solid oklch(1 0 0 / 15%);
+  color: oklch(0.85 0.01 250);
+  padding: 0.15rem 0.55rem;
+  border-radius: 0.3rem;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.copy-btn:hover { background: oklch(1 0 0 / 10%); }
+
+/* Fade-in */
+@keyframes fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.animate-fade-in { animation: fade-in 0.2s ease-out; }
+
+/* Compact note-card preview: fade the final line without assuming a surface color. */
+.note-preview-fade {
+  -webkit-mask-image: linear-gradient(to bottom, black 62%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 62%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in { animation: none; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-muted-foreground); }
+
+/* Math (KaTeX) */
+/* ============================================================================
+   KaTeX — tampilan rumus inline & block
+   ============================================================================ */
+
+.prose-note .katex {
+  font-size: 1.06em;
+  line-height: 1.1;
+}
+
+/* Global: rumus tidak boleh meluber keluar layar (terutama di soal latihan & ponsel) */
+.katex {
+  max-width: 100%;
+}
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* Rumus inline di tengah teks — cegah pecahan merusak jarak antar-baris */
+.prose-note p .katex,
+.prose-note li .katex,
+.prose-note td .katex {
+  vertical-align: baseline;
+}
+
+/* Rumus blok ($$...$$) — beri ruang atas-bawah & scroll horizontal bila panjang */
+.prose-note .katex-display {
+  margin: 0.9em 0;
+  padding: 0.15em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.prose-note .katex-display > .katex {
+  font-size: 1.18em;
+}
+
+/* Di dalam tabel atau list sempit — kurangi margin */
+.prose-note li .katex-display,
+.prose-note td .katex-display {
+  margin: 0.5em 0;
+}
+
+/* Rumus inline panjang — beri sedikit ruang horizontal */
+.prose-note .katex .mfrac {
+  margin: 0 0.1em;
+}
+
+.prose-note .katex .mop {
+  margin-right: 0.05em;
+}
+
+/* Fallback bila KaTeX gagal render */
+.prose-note .katex-error {
+  color: var(--color-destructive);
+}
+
+/* ============================================================================
+   KaTeX — force-hide MathML & annotation (fix duplikasi MMM)
+   KaTeX render tiap rumus jadi 3 layer: MathML + annotation + html.
+   Normalnya katex.min.css sembunyikan 2 layer pertama, tapi Tailwind v4
+   preflight bisa override. Paksa dengan !important.
+   ============================================================================ */
+
+.katex .katex-mathml {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+/* Fallback browser modern */
+.katex .katex-mathml {
+  clip-path: inset(50%) !important;
+}
+
+/* Pastikan HTML layer tetap tampil */
+.katex .katex-html {
+  display: inline-block;
+}
+
+/* Annotation MathML (source LaTeX) juga harus tersembunyi */
+.katex annotation {
+  display: none !important;
+}

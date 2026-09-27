@@ -1,0 +1,32 @@
+[33mcommit cccab582bd18676ea2b72758b27c2604cf9c3d8c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Kartyamorgana <capeka190@gmail.com>
+Date:   Sun Sep 27 19:43:30 2026 +0700
+
+    Migrate off Lovable: own Supabase, Google AI Studio, Cloudflare Workers
+
+ .env                                            |    6 [31m-[m
+ .gitignore                                      |   50 [32m+[m[31m-[m
+ package-lock.json                               | 3004 [32m++++++++++++++++++[m[31m-----[m
+ package.json                                    |   10 [32m+[m[31m-[m
+ src/integrations/lovable/index.ts               |   39 [31m-[m
+ src/integrations/supabase/auth-attacher.ts      |   25 [32m+[m[31m-[m
+ src/integrations/supabase/auth-middleware.ts    |  178 [32m+[m[31m-[m
+ src/integrations/supabase/client.server.ts      |   54 [32m+[m[31m-[m
+ src/integrations/supabase/client.ts             |   48 [32m+[m[31m-[m
+ src/integrations/supabase/cron-auth.ts          |   41 [32m+[m[31m-[m
+ src/integrations/supabase/previewAuthStorage.ts |   99 [32m+[m[31m-[m
+ src/lib/ai-config.server.ts                     |   22 [32m+[m
+ src/lib/ai-gateway.server.ts                    |   19 [32m+[m[31m-[m
+ src/lib/ai.functions.ts                         |   16 [32m+[m[31m-[m
+ src/lib/auth-oauth.ts                           |   20 [32m+[m
+ src/lib/db.ts                                   |   70 [32m+[m[31m-[m
+ src/lib/error-reporting.ts                      |   20 [32m+[m
+ src/lib/ingest.server.ts                        |   32 [32m+[m[31m-[m
+ src/lib/lovable-error-reporting.ts              |   36 [31m-[m
+ src/routeTree.gen.ts                            |  207 [32m+[m[31m-[m
+ src/routes/__root.tsx                           |   76 [32m+[m[31m-[m
+ src/routes/auth.callback.tsx                    |   47 [32m+[m
+ src/routes/auth.tsx                             |   26 [32m+[m[31m-[m
+ vite.config.ts                                  |   48 [32m+[m[31m-[m
+ wrangler.toml                                   |   20 [32m+[m
+ 25 files changed, 2989 insertions(+), 1224 deletions(-)

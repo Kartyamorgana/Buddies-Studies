@@ -1,0 +1,20 @@
+name = "studynotes"
+main = ".output/server/index.mjs"
+compatibility_date = "2026-09-27"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = ".output/public"
+binding = "ASSETS"
+
+[observability]
+enabled = true
+
+[vars]
+AI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai"
+AI_CHAT_MODEL = "gemini-2.5-flash"
+AI_TRANSCRIBE_MODEL = "gemini-2.5-flash"
+
+# Secrets (SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY,
+# SUPABASE_SERVICE_ROLE_KEY, AI_API_KEY) dimasukkan
+# via `npx wrangler secret put NAMA_SECRET`.
